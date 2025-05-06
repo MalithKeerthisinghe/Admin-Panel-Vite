@@ -1,0 +1,189 @@
+.dash-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.dash-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dash-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 140px;
+  transition: transform 0.2s;
+  position: relative; /* Added for absolute positioning of child elements */
+}
+
+.dash-card:hover {
+  transform: translateY(-2px);
+}
+
+.dash-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative; /* Added for positioning context */
+}
+
+.dash-card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dash-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  height: 26px; /* Fixed height for title */
+  display: flex;
+  align-items: center;
+}
+
+/* Completely redesigned card value styling for consistent alignment */
+.dash-card-value {
+  font-size: 24px !important;
+  font-weight: 700;
+  line-height: 1 !important;
+  height: 40px !important; /* Fixed height for all values */
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 10px !important;
+  position: relative; /* For positioning */
+}
+
+.value-progress {
+  margin: 2px 0;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.dash-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.dash-icon {
+  font-size: 36px !important;
+}
+
+/* Make all cards the same height and structure */
+.dash-card, .dash-card.info {
+  min-height: 140px !important;
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100% !important; /* Make all cards the same width */
+}
+
+.dash-card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dash-card-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Ensure all text color classes have the same font properties */
+.primary-text,
+.warning-text,
+.success-text,
+.info-text {
+  font-size: 24px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Color variants */
+.primary {
+  border-left: 4px solid #1976d2;
+}
+
+.primary-text {
+  color: #1976d2;
+}
+
+.primary-bg {
+  background-color: #e3f2fd;
+}
+
+.warning {
+  border-left: 4px solid #ff9800;
+}
+
+.warning-text {
+  color: #ff9800;
+}
+
+.warning-bg {
+  background-color: #fff3e0;
+}
+
+.success {
+  border-left: 4px solid #4caf50;
+}
+
+.success-text {
+  color: #4caf50;
+}
+
+.success-bg {
+  background-color: #e8f5e9;
+}
+
+.info {
+  border-left: 4px solid #2196f3;
+}
+
+.info-text {
+  color: #2196f3;
+}
+
+.info-bg {
+  background-color: #e1f5fe;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .dash-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .dash-card, .dash-card.info {
+    width: 100% !important;
+  }
+}

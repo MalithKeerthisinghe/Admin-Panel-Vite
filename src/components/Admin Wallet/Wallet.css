@@ -1,0 +1,118 @@
+/* Reset all card-related styles to ensure consistency */
+.dash-cards.wallet-cards {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: 1fr !important;
+  margin: 0 auto;
+  max-width: 600px;
+  padding-bottom: 30px;
+  gap: 20px;
+}
+
+/* Card link style */
+.dash-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+/* Base card style */
+.dash-card {
+  width: 100%;
+  height: 180px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Expanded card */
+.dash-card.expanded {
+  height: 220px;
+}
+
+/* Card hover effect */
+.dash-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Card border colors */
+.dash-card.primary { border-left: 6px solid #4e73df; }
+.dash-card.warning { border-left: 6px solid #f6c23e; }
+.dash-card.success { border-left: 6px solid #1cc88a; }
+.dash-card.info { border-left: 6px solid #36b9cc; }
+.dash-card.secondary { border-left: 6px solid #8e44ad; }
+.dash-card.tertiary { border-left: 6px solid #e74c3c; }
+
+/* Consistent card content layout */
+.dash-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Text container layout */
+.dash-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+/* Card title style */
+.dash-card-title {
+  font-size: 18px;
+  color: #6c757d;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* Card value base style */
+.dash-card-value {
+  font-size: 24px !important;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+  line-height: 1.3;
+}
+
+/* Text colors */
+.primary-text { color: #4e73df !important; }
+.warning-text { color: #f6c23e !important; }
+.success-text { color: #1cc88a !important; }
+.info-text { color: #36b9cc !important; }
+.secondary-text { color: #8e44ad !important; }
+.tertiary-text { color: #e74c3c !important; }
+
+/* Responsive font sizing */
+.dash-card-value.long-value {
+  font-size: 20px !important;
+}
+
+.dash-card-value.very-long-value {
+  font-size: 18px !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .dash-card-value {
+    font-size: 22px !important;
+  }
+  
+  .dash-card-value.long-value {
+    font-size: 18px !important;
+  }
+  
+  .dash-card-value.very-long-value {
+    font-size: 16px !important;
+  }
+}
