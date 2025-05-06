@@ -47,6 +47,9 @@
 .dash-card.info { border-left: 6px solid #36b9cc; }
 .dash-card.secondary { border-left: 6px solid #8e44ad; }
 .dash-card.tertiary { border-left: 6px solid #e74c3c; }
+.dash-card.default { border-left: 6px solid #c636d3; }
+.dash-card.light { border-left: 6px solid #5fa3c3; }
+.dash-card.dark { border-left: 6px solid #7de95a; }
 
 /* Consistent card content layout */
 .dash-card-content {
@@ -92,6 +95,9 @@
 .info-text { color: #36b9cc !important; }
 .secondary-text { color: #8e44ad !important; }
 .tertiary-text { color: #e74c3c !important; }
+.default-text { color: #c636d3 !important; }
+.color-text1 { color: #5fa3c3 !important; }
+.color-text2 { color: #7de95a !important; }
 
 /* Responsive font sizing */
 .dash-card-value.long-value {

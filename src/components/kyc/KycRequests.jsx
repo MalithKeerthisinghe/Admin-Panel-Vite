@@ -370,7 +370,7 @@ const KycVerificationAdmin = () => {
                 <CardContent>
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={4}>
-                      <Typography variant="subtitle2" color="textSecondary">User Information</Typography>
+                      <Typography variant="subtitle2" color="textSecondary">User Information({verification.verificationType})</Typography>
                       <Typography variant="h6">{verification.userName || 'N/A'}</Typography>
                       <Typography variant="body2" color="textSecondary">User ID: {verification.userId}</Typography>
                       <Typography variant="body2">NIC: {verification.username || 'N/A'}</Typography>
@@ -442,8 +442,11 @@ const KycVerificationAdmin = () => {
                         )}
                       </Box>
                     </Grid>
+
                     
+                    {verification.verificationType === 'NIC' && (
                     <Grid item xs={12} md={4}>
+
                       <Typography variant="subtitle2" color="textSecondary">Back Document</Typography>
                       <Box 
                         sx={{ 
@@ -492,6 +495,7 @@ const KycVerificationAdmin = () => {
                         )}
                       </Box>
                     </Grid>
+                    )}
                   </Grid>
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'flex-end', p: 2 }}>

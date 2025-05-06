@@ -102,7 +102,7 @@ const handleConfirmAction = async () => {
       key: 'amount',
       label: 'Amount',
       minWidth: 100,
-      render: (value) => `$${parseFloat(value).toFixed(2)}`
+      render: (value) => `$${parseFloat(value/1.1).toFixed(2)}`
     },
     {
       key: 'created_at',

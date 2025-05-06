@@ -35,11 +35,13 @@ const Wallet = () => {
         let totalInvestment1 = 0;
         let totalCoin = 0;
         let totalCommission = 0;
+        let withdrawal_total = 0;
         
         // Process the TEC investment data correctly
         if (commissionRes && commissionRes.data) {
           // Extract total commission
           totalCommission = parseFloat(commissionRes.data.total) || 0;
+          withdrawal_total = parseFloat(commissionRes.data.withdrawal_total) || 0;
           
           // Extract investment amount
           const investmentEntry = commissionRes.data.byType.find(
@@ -73,11 +75,10 @@ const Wallet = () => {
         const pendingWithdrawalRes = await walletService.getPendingWithdrawalAmount();
         let pendingWithdrawalAmount = 0;
         if (pendingWithdrawalRes && pendingWithdrawalRes.data) {
-          if (typeof pendingWithdrawalRes.data.totalPendingAmount === 'number') {
-            pendingWithdrawalAmount = pendingWithdrawalRes.data.totalPendingAmount;
-          } else if (typeof pendingWithdrawalRes.data === 'number') {
-            pendingWithdrawalAmount = pendingWithdrawalRes.data;
-          }
+          const rawAmount = pendingWithdrawalRes.data.totalPendingAmount;
+          // Handle both number and string responses
+          pendingWithdrawalAmount = typeof rawAmount === 'string' ? parseFloat(rawAmount) : Number(rawAmount);
+          pendingWithdrawalAmount = isNaN(pendingWithdrawalAmount) ? 0 : pendingWithdrawalAmount;
         }
 
         // Fetch service charge from API
@@ -109,6 +110,7 @@ const Wallet = () => {
           totalCoin,
           totalCommission,
           totalWithdrawal,
+          withdrawal_total,
           pendingWithdrawalAmount,
           serviceCharge,
           userCount,
@@ -227,7 +229,7 @@ const Wallet = () => {
     <div className="dash-container">
       <div className="dash-cards wallet-cards">
         <StatCard 
-          title="Total Investment"
+          title="Investment Commision"
           value={formatCurrency(stats.totalInvestment1)}
           colorClass="primary"
           valueClass="primary-text"
@@ -235,7 +237,7 @@ const Wallet = () => {
         />
         
         <StatCard 
-          title="TEC Investment"
+          title="TEC Commision"
           value={formatCurrency(stats.totalCoin)}
           colorClass="success"
           valueClass="success-text"
@@ -243,8 +245,8 @@ const Wallet = () => {
         />
         
         <StatCard 
-          title="Total Withdrawal"
-          value={formatCurrency(stats.totalWithdrawal)}
+          title="Withdrawal Commission"
+          value={formatCurrency(stats.withdrawal_total)}
           colorClass="info"
           valueClass="info-text"
           link="/admin/withdrawals"
@@ -271,6 +273,27 @@ const Wallet = () => {
           value={stats.userCount.toLocaleString()}
           colorClass="tertiary"
           valueClass="tertiary-text"
+          link="/admin/users"
+        />
+        <StatCard 
+          title="Total Invested Amount"
+          value={stats.userCount.toLocaleString()}
+          colorClass="default"
+          valueClass="default-text"
+          link="/admin/users"
+        />
+        <StatCard 
+          title="Total Coin Amount"
+          value={stats.userCount.toLocaleString()}
+          colorClass="light"
+          valueClass="color-text1"
+          link="/admin/users"
+        />
+        <StatCard 
+          title="Total Amount"
+          value={stats.userCount.toLocaleString()}
+          colorClass="dark"
+          valueClass="color-text2"
           link="/admin/users"
         />
       </div>
